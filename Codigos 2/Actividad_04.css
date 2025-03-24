@@ -1,0 +1,29 @@
+h1 { border: 2px solid tomato;}
+ul {
+    border-width: 5px;
+    border-style: dashed;
+    border-color: dodgerblue;
+}
+il {
+    border-width: 2.5px;
+    border-style: dotted;
+    border-color: violet;
+}
+p {
+    border-width: 2.5px;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: darkred;
+}
+body {
+    background-image: url(portada.png   );
+    background-repeat: no-repeat;
+    background-position: top right;
+    background-attachment: fixed;
+    background-size: 150px;
+    font-family: "Big Shoulders", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: <150>;
+    font-style: normal;
+
+}

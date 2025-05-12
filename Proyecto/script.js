@@ -1,13 +1,12 @@
-var swiper = new Swiper(".mySwiper", {
 
-    slidePerView: 1,
-    spacebewteen: 30,
-    grabCursor: true,
-    loop:true,
-    breakpoints : {
-        991: {
-            slidesPerView:4
-        }
-    }
-
-});
+document.querySelectorAll('.data-item').forEach(item => {
+    item.addEventListener('mouseenter', () => {
+      item.style.fontWeight = 'bold';
+      item.style.letterSpacing = '0.5px';
+    });
+    item.addEventListener('mouseleave', () => {
+      item.style.fontWeight = 'normal';
+      item.style.letterSpacing = 'normal';
+    });
+  });
+  

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head lang="es">
+    <title>Unidad 3 | Actividad 04</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="uft-8"/>
+    <meta name="Autor" content="Fernando Jasso Gomez">
+    <meta name="Fecha" content="07/05/2025">
+    <meta name="Descripcion" content="JavaScript">
+  </head>
+  <body>
+    <h1>Unidad 3 | Actividad 04 :: Tema (JavaScript)</h1>
+    <ol>
+        <li id="valor_1"><strong>UPSLP</strong></li>
+        <li id="valor_2"></li>
+        <li id="valor_3"></li>
+        <li id="valor_4"></li>
+        <li id="valor_5"></li>
+        <li id="valor_6"></li>
+        <li id="valor_7"></li>
+        <li id="valor_8"><strong>ITESM (<i>San Luis Potosí</i>)</strong></li>
+        <li id="valor_9"></li>
+        <li id="valor_10"></li>
+    </ol>
+    <script>
+        //Asignar valor
+        document.getElementById("valor_3").textContent = 'UVM';
+        //Recuperar valor
+        let varTemp = document.getElementById("valor_8").textContent;
+        document.getElementById("valor_7").textContent = varTemp;
+        //innerText
+        varTemp = document.getElementById("valor_8").textContent;
+        document.getElementById("valor_9").innerText = varTemp;
+        //innerHTML
+        varTemp = document.getElementById("valor_8").textContent;
+        document.getElementById("valor_10").innerHTML = varTemp ;
+    </script>
+  </body>
+</html>

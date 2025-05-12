@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head lang="es">
+    <title>Unidad 3 | Actividad 06</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta charset="utf-8"/>
+    <meta name="Autor" content="Fernando Jasso Gomez">
+    <meta name="Fecha" content="12/05/25">
+    <meta name="Descripcion" content="Formularios">
+    <style>
+        p {
+          background-color: navy;
+          color: greenyellow; 
+          border: 2px crimson dashed;
+          padding: 10px;
+        }
+    </style>
+    <script>
+      function funcionClic() {
+        const parrafo = document.getElementById("varParrafo");
+        const nuevaLinea = document.createElement("span");
+        nuevaLinea.innerHTML = "Hola Mundo [Click]<br>";
+        parrafo.appendChild(nuevaLinea);
+      }
+
+      function funcionDoble() {
+        const parrafo = document.getElementById("varParrafo");
+        const nuevaLinea = document.createElement("span");
+        nuevaLinea.innerHTML = "Hola Mundo [DobleClick]<br>";
+        parrafo.appendChild(nuevaLinea);
+      }
+
+      function validarAcceso() {
+        if (navigator.cookieEnabled) {
+            alert("Bienvenido a mi sitio web");
+        } else {
+            alert("Las cookies están deshabilitadas. Algunas funciones pueden no funcionar correctamente.");
+        }
+      }
+
+      function mouseOver(ob) {
+        ob.style.backgroundColor = "Black";
+      }
+
+      function mouseOut(ob) {
+        ob.style.backgroundColor = "Navy";
+      }
+    </script>
+  </head>
+  <body onload="validarAcceso()">
+    <h1>Unidad 3 | Actividad 06 :: Tema (JavaScript)</h1>
+    <h3>Presiona el botón para ejecutar la función</h3>
+    <button onclick="funcionClic()" ondblclick="funcionDoble()">Presiona aquí</button>
+    <p id="varParrafo" onmouseover="mouseOver(this)" onmouseout="mouseOut(this)"></p>
+  </body>
+</html>

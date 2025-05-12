@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head lang="es">
+    <title>Tabla de Multiplicar</title>
+    <meta charset="utf-8"/>
+    <meta name="Autor" content="Fernando Jasso Gomez">
+    <meta name="Fecha" content="07/05/25">
+    <meta name="Descripcion" content="Tabla de Multiplicar con JavaScript">
+    <style>
+      table {
+        border-collapse: collapse;
+        width: 50%;
+        margin: 20px auto;
+        text-align: center;
+      }
+      th, td {
+        border: 1px solid #000;
+        padding: 8px;
+      }
+      th {
+        background-color: #f2f2f2;
+      }
+      tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Unidad 3 | Actividad 03 :: Tema (JavaScript)</h1>
+    <script>
+        let numTabla;
+        do {
+            numTabla = window.prompt("¿Qué tabla de multiplicar deseas? [1-10]");
+            numTabla = Number(numTabla);
+        } while (numTabla < 1 || numTabla > 10);
+
+        let topeTabla;
+        do {
+            topeTabla = window.prompt("¿Cuántos valores quieres mostrar? [1-100]");
+            topeTabla = Number(topeTabla);
+        } while (topeTabla < 1 || topeTabla > 100);
+
+        document.write("<table>");
+        document.write("<tr><th>No.</th><th>Suma</th><th>Multiplica</th></tr>");
+        for (let i = 1; i <= topeTabla; i++) {
+            document.write("<tr>");
+            document.write("<td>" + i + "</td>");
+            document.write("<td>" + numTabla + " + " + i + " = " + (numTabla + i) + "</td>");
+            document.write("<td>" + numTabla + " × " + i + " = " + (numTabla * i) + "</td>");
+            document.write("</tr>");
+        }
+        document.write("</table>");
+    </script>
+  </body>
+</html>

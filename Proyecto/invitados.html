@@ -25,20 +25,31 @@
         }
 
         .navbar {
-            background-color: rgba(0, 0, 0, 0.9);
-            border-bottom: 2px solid #8B0000;
+            background-color: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid darkred;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
-
         .navbar-brand, .nav-link {
-            color: #FFD700 !important;
+            color: goldenrod !important;
             font-weight: bold;
             text-transform: uppercase;
         }
-
         .nav-link:hover {
             color: white !important;
         }
-
+        .dropdown-menu {
+            background-color: rgba(0, 0, 0, 0.9);
+            border: 1px solid darkred;
+        }
+        .dropdown-item {
+            color: goldenrod !important;
+        }
+        .dropdown-item:hover {
+            color: white !important;
+            background-color: darkred;
+        }
         .character-section {
             display: flex;
             flex-wrap: wrap;
@@ -98,7 +109,7 @@
 <body>
     <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
-            <a class="navbar-brand" href="portada.html">Kombatientes</a>
+            <a class="navbar-brand" href="portada.html">Mortal Kombat</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>

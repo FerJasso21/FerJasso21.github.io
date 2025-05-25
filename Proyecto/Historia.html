@@ -5,98 +5,322 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Mortal Kombat - Historia y Actualidad</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@400;700&display=swap" rel="stylesheet">
   <style>
-        body {
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            font-family: 'Aptos', sans-serif;
-        }
+    :root {
+      --gold: #FFD700;
+      --blood: #8B0000;
+      --dark-bg: #0a0a0a;
+      --section-bg: rgba(20, 20, 20, 0.8);
+    }
 
-        .overlay {
-            background-color: rgba(0, 0, 0, 0.8);
-            min-height: 100vh;
-            padding: 20px;
-        }
+    body {
+      background: url('https://images.unsplash.com/photo-1542281286-9e0a16bb7366?q=80&w=2070&auto=format&fit=crop') no-repeat center center fixed;
+      background-size: cover;
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      position: relative;
+    }
 
-        .navbar {
-            background-color: rgba(0, 0, 0, 0.9);
-            border-bottom: 2px solid #8B0000;
-        }
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: -1;
+    }
 
-        .navbar-brand, .nav-link {
-            color: #FFD700 !important;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.8);
+        border-bottom: 2px solid darkred;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+    }
+    .navbar-brand, .nav-link {
+        color: goldenrod !important;
+        font-weight: bold;
+        text-transform: uppercase;
+    }
+    .nav-link:hover {
+        color: white !important;
+    }
+    .dropdown-menu {
+        background-color: rgba(0, 0, 0, 0.9);
+        border: 1px solid darkred;
+    }
+    .dropdown-item {
+        color: goldenrod !important;
+    }
+    .dropdown-item:hover {
+        color: white !important;
+        background-color: darkred;
+    }
+    .container {
+      padding-top: 2rem;
+      padding-bottom: 4rem;
+    }
 
-        .nav-link:hover {
-            color: white !important;
-        }
+    h1, h2, h3, .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+      letter-spacing: 2px;
+      position: relative;
+      margin-bottom: 2rem;
+    }
 
-        .character-section {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-            max-width: 900px;
-        }
+    h1 {
+      font-size: 3.5rem;
+      text-transform: uppercase;
+      margin-bottom: 3rem;
+      animation: glow 2s ease-in-out infinite alternate;
+    }
 
-        .character-section img {
-            max-width: 300px;
-            max-height: 300px;
-            border-radius: 10px;
-            object-fit: cover;
-            margin: 20px;
-            border: 3px solid #FFD700;
-        }
+    h2 {
+      font-size: 2.5rem;
+      border-bottom: 3px solid var(--blood);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
 
-        .character-text {
-            flex: 1;
-            padding: 20px;
-            text-align: left;
-        }
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 5px var(--gold), 0 0 10px rgba(255, 215, 0, 0.5);
+      }
+      to {
+        text-shadow: 0 0 10px var(--gold), 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
+      }
+    }
 
-        h1, h2, h3 {
-            font-family: 'Mortal Kombat', sans-serif;
-            color: #FFD700;
-            text-shadow: 2px 2px 4px black;
-        }
+    .section-box {
+      background-color: var(--section-bg);
+      border-radius: 10px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+      border-left: 4px solid var(--blood);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-        h4, h5 {
-            color: white;
-        }
+    .section-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 20px rgba(139, 0, 0, 0.4);
+    }
 
-        .content-section {
-            background-color: rgba(0, 0, 0, 0.5);
-            padding: 20px;
-            border-radius: 10px;
-            margin: 30px auto;
-            max-width: 700px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-        }
+    .img-box {
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.6);
+      border: 3px solid var(--gold);
+      transition: transform 0.3s ease;
+      position: relative;
+    }
 
-        .table-dark {
-            background-color: rgba(0, 0, 0, 0.7);
-        }
+    .img-box:hover {
+      transform: scale(1.03);
+    }
 
-        .table-dark th, .table-dark td {
-            color: #FFD700;
-        }
-    </style>
+    .img-box::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(255, 215, 0, 0.1), rgba(139, 0, 0, 0.1));
+      pointer-events: none;
+    }
+
+    .list-group-item {
+      background-color: rgba(10, 10, 10, 0.7);
+      color: white;
+      border: 1px solid rgba(255, 215, 0, 0.2);
+      margin-bottom: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .list-group-item:hover {
+      background-color: rgba(139, 0, 0, 0.3);
+      border-left: 4px solid var(--gold);
+    }
+
+    .data-item strong {
+      color: var(--gold);
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 1rem;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.8rem;
+    }
+
+
+
+    .blood-drop {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(139, 0, 0, 0.6) 0%, rgba(139, 0, 0, 0) 70%);
+      filter: blur(5px);
+      z-index: -1;
+      animation: float 15s infinite linear;
+    }
+
+    @keyframes float {
+      0% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(50px, 30px);
+      }
+      50% {
+        transform: translate(0, 60px);
+      }
+      75% {
+        transform: translate(-50px, 30px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+
+    .blood-drop:nth-child(2) {
+      width: 80px;
+      height: 80px;
+      animation-delay: 5s;
+      animation-duration: 18s;
+    }
+
+    .blood-drop:nth-child(3) {
+      width: 60px;
+      height: 60px;
+      animation-delay: 8s;
+      animation-duration: 12s;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--gold), var(--blood));
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      padding: 20px 40px;
+      position: relative;
+      width: 50%;
+      box-sizing: border-box;
+    }
+
+    .timeline-item:nth-child(odd) {
+      left: 0;
+    }
+
+    .timeline-item:nth-child(even) {
+      left: 50%;
+    }
+
+    .timeline-content {
+      padding: 20px;
+      background: var(--section-bg);
+      border-radius: 10px;
+      border-left: 4px solid var(--gold);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    }
+
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background-color: var(--blood);
+      border: 3px solid var(--gold);
+      border-radius: 50%;
+      top: 30px;
+      z-index: 1;
+    }
+
+    .timeline-item:nth-child(odd)::after {
+      right: -10px;
+    }
+
+    .timeline-item:nth-child(even)::after {
+      left: -10px;
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 30px;
+      }
+      
+      .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 20px;
+      }
+      
+      .timeline-item:nth-child(even) {
+        left: 0;
+      }
+      
+      .timeline-item::after {
+        left: 20px;
+      }
+      
+      .timeline-item:nth-child(odd)::after,
+      .timeline-item:nth-child(even)::after {
+        left: 20px;
+      }
+    }
+
+    footer {
+      background-color: var(--dark-bg);
+      color: var(--gold);
+      padding: 2rem 0;
+      border-top: 3px solid var(--blood);
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      letter-spacing: 1px;
+    }
+
+    footer p {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+  </style>
 </head>
 <body>
+  <div class="blood-drop" style="top: 20%; left: 10%;"></div>
+  <div class="blood-drop" style="top: 60%; left: 80%;"></div>
+  <div class="blood-drop" style="top: 40%; left: 30%;"></div>
 
   <nav class="navbar navbar-expand-md">
         <div class="container-fluid">
-            <a class="navbar-brand" href="portada.html">Kombatientes</a>
+            <a class="navbar-brand" href="portada.html">Mortal Kombat</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -111,13 +335,18 @@
     </nav>
 
   <div class="container py-5">
-    <h1 class="text-center mb-4">Mortal Kombat: De sus orígenes a la actualidad</h1>
+    <h1 class="text-center mb-4">MORTAL KOMBAT: DE SUS ORÍGENES A LA ACTUALIDAD</h1>
 
-    <section class="mb-5">
-      <h2 class="section-title">Historia y Desarrollo Inicial</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <p>
+    <section class="section-box">
+      <h2 class="section-title">HISTORIA Y DESARROLLO INICIAL</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="img-box">
+            <img src="Nederealm.jpg" alt="NetherRealm Studios" class="img-fluid rounded">
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <p class="lead">
             Mortal Kombat nació en 1992 gracias a Ed Boon y John Tobias, bajo Midway Games. El objetivo inicial era crear un videojuego protagonizado por Jean-Claude Van Damme, pero eventualmente se transformó en Johnny Cage.
           </p>
           <p>
@@ -126,35 +355,56 @@
           <p>
             Desde el principio, destacó por sus mecánicas de combate uno a uno, su universo oscuro y sus personajes con estilos únicos.
           </p>
-          <p>
-            El desarrollo de Mortal Kombat ha sido un proceso fascinante que ha evolucionado con el tiempo. La franquicia comenzó en 1992, creada por Ed Boon y John Tobias bajo la compañía Midway Games. Su objetivo era competir con Street Fighter II, pero con un enfoque más realista y violento, lo que llevó a la introducción de los icónicos Fatalities.
-          </p>
-          <h3>Evolución del desarrollo:</h3>
-          <ul>
-                <li>Digitalización de actores reales: En los primeros juegos, los personajes fueron creados mediante la captura de movimientos de actores reales, lo que les dio un aspecto único.</li>
-                        <li>Expansión de la historia: A medida que la saga avanzó, se introdujeron narrativas más complejas, con múltiples reinos y personajes con historias profundas.</li>
-                 <li>Cambio de tecnología: Con la bancarrota de Midway en 2009, Warner Bros. Interactive Entertainment adquirió la franquicia y el desarrollo pasó a NetherRealm Studios, quienes modernizaron el juego con gráficos en 3D y mecánicas más refinadas.</li>
-                <li>Modo historia cinematográfico: Desde Mortal Kombat 9, los juegos han incluido un modo historia con escenas cinematográficas que conectan los combates de manera fluida.</li>
-                <li>Innovaciones en jugabilidad: Se han añadido nuevas mecánicas como los X-Ray Moves, los Fatal Blows y los Kameo Fighters, que permiten más estrategias en combate.</li>
-          </ul>
-          <p>
-            La franquicia sigue evolucionando con cada entrega, manteniendo su esencia pero adaptándose a las nuevas tecnologías y tendencias.
-          </p>
         </div>
-        <div class="col-md-6">
-          <img src="Nederealm.jpg" alt="Portada MK" class="img-fluid rounded shadow"width="400" height="300">
+      </div>
+      
+      <div class="mt-4">
+        <h3>EVOLUCIÓN DEL DESARROLLO</h3>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>1992-1995: La era arcade</h4>
+              <p>Digitalización de actores reales para crear personajes únicos. Introducción de los icónicos Fatalities que definieron la franquicia.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>1996-2004: Transición a 3D</h4>
+              <p>La serie evolucionó a gráficos 3D con Mortal Kombat 4. Expansión de la historia con múltiples reinos y personajes complejos.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>2009: Cambio de compañía</h4>
+              <p>Con la bancarrota de Midway, Warner Bros. adquiere la franquicia y NetherRealm Studios toma las riendas del desarrollo.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>2011: El reinicio</h4>
+              <p>Mortal Kombat (9) modernizó la serie con gráficos 3D y un modo historia cinematográfico que conecta los combates.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <h4>2023: Nuevo comienzo</h4>
+              <p>Mortal Kombat 1 presenta un universo alternativo con versiones distintas de personajes clásicos y el sistema Kameo Fighters.</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <section class="mb-5">
-      <h2 class="section-title">Estado Actual de la Franquicia</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <img src="Logo2023.jpg" alt="MK 1 2023" class="img-fluid rounded shadow"width="400" height="300">
+    <section class="section-box">
+      <h2 class="section-title">ESTADO ACTUAL DE LA FRANQUICIA</h2>
+      <div class="row align-items-center">
+        <div class="col-lg-6 order-lg-2 mb-4 mb-lg-0">
+          <div class="img-box">
+            <img src="esports.png" alt="Mortal Kombat 1" class="img-fluid rounded">
+          </div>
         </div>
-        <div class="col-md-6">
-          <p>
+        <div class="col-lg-6 order-lg-1">
+          <p class="lead">
             En 2023, la franquicia se reinició con <strong>Mortal Kombat 1</strong>, desarrollado por NetherRealm Studios. El nuevo juego presentó un universo alternativo con versiones distintas de personajes conocidos.
           </p>
           <p>
@@ -164,54 +414,101 @@
             La comunidad sigue activa, con torneos, contenido descargable (DLC) y actualizaciones frecuentes.
           </p>
           <p>
-            La franquicia Mortal Kombat fue originalmente desarrollada por Midway Games, pero tras la bancarrota de la empresa en 2009, Warner Bros. Interactive Entertainment adquirió los derechos. Desde entonces, el estudio NetherRealm Studios, bajo la dirección de Ed Boon, ha sido el encargado de desarrollar los nuevos títulos.
-          </p>
-          <p>
-            De echo la francquicia tendra una próxima película, titulada Mortal Kombat 2, tiene su estreno programado para el 24 de octubre de 2025. La secuela traerá de vuelta a varios personajes icónicos y contará con nuevas incorporaciones, como Karl Urban en el papel de Johnny Cage.
+            La próxima película, <strong>Mortal Kombat 2</strong>, tiene su estreno programado para el 24 de octubre de 2025, con Karl Urban como Johnny Cage.
           </p>
         </div>
       </div>
     </section>
 
-    <section class="mb-5">
-      <h2 class="section-title">Datos Importantes</h2>
-      <ul class="list-group list-group-flush bg-dark text-white" id="data-list">
-        <li class="list-group-item data-item">🎮 <strong>Lanzamiento original:</strong> 1992</li>
-        <li class="list-group-item data-item">📦 <strong>Juegos principales:</strong> 12 títulos principales hasta 2023</li>
-        <li class="list-group-item data-item">💰 <strong>Copias vendidas:</strong> Más de 80 millones (hasta 2023)</li>
-        <li class="list-group-item data-item">🏆 <strong>Impacto:</strong> Juego clave en la industria y legislación del gaming</li>
-        <li class="list-group-item data-item">🎬 <strong>Adaptaciones:</strong> Películas (1995, 2021), series animadas, cómics</li>
-      </ul>
+    <section class="section-box">
+      <h2 class="section-title">DATOS IMPORTANTES</h2>
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item data-item">🎮 <strong>Lanzamiento original:</strong> 1992</li>
+            <li class="list-group-item data-item">📦 <strong>Juegos principales:</strong> 12 títulos hasta 2023</li>
+            <li class="list-group-item data-item">💰 <strong>Copias vendidas:</strong> Más de 80 millones</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <ul class="list-group">
+            <li class="list-group-item data-item">🏆 <strong>Impacto:</strong> Clave en la industria del gaming</li>
+            <li class="list-group-item data-item">🎬 <strong>Adaptaciones:</strong> 2 películas, series y cómics</li>
+            <li class="list-group-item data-item">⚔️ <strong>Personajes:</strong> Más de 80 luchadores únicos</li>
+          </ul>
+        </div>
+      </div>
     </section>
-    <section class="mb-5">
-      <h2 class="section-title">Historia del Universo Mortal Kombat</h2>
-      <p>
+
+    <section class="section-box">
+      <h2 class="section-title">HISTORIA DEL UNIVERSO MORTAL KOMBAT</h2>
+      <p class="lead">
         El universo de MK gira en torno a combates entre reinos: Earthrealm, Outworld, Netherrealm, Edenia y otros. Un torneo llamado Mortal Kombat decide el destino de estos mundos.
       </p>
-      <p>
-        Liu Kang, Raiden, Scorpion, Sub-Zero y Kitana son figuras clave. Cada entrega expandió el lore, incluyendo viajes en el tiempo, fusiones de reinos y reinicios de línea temporal.
-      </p>
-      <p>
-        En MK1 (2023), Liu Kang reescribe la historia al convertirse en Dios del Fuego. Esto da lugar a nuevas alianzas y amenazas, dejando espacio para futuras entregas.
-      </p>
-      <p>
-        La historia de Mortal Kombat es rica en mitología y conflictos entre reinos. En su universo, existen varios reinos, como Earthrealm (la Tierra), Outworld, Edenia y Netherrealm, que están en constante lucha por el dominio. Para evitar invasiones, los Dioses Antiguos establecieron el torneo Mortal Kombat, donde los guerreros más poderosos de cada reino combaten a muerte. Si un reino gana diez torneos consecutivos, puede conquistar otro.
-      </p>
-      <p>
-        El villano Shao Kahn, emperador de Outworld, ha intentado conquistar Earthrealm en varias ocasiones, enfrentándose a héroes como Liu Kang, Raiden y Johnny Cage. A lo largo de la saga, han surgido amenazas como Shinnok, Quan Chi y el Rey Dragón Onaga, cada uno con sus propios planes de dominación.
-      </p>
-      <p>
-        La historia de Mortal Kombat es rica en mitología y conflictos entre reinos. En su universo, existen varios reinos, como Earthrealm (la Tierra), Outworld, Edenia y Netherrealm, que están en constante lucha por el dominio. Para evitar invasiones, los Dioses Antiguos establecieron el torneo Mortal Kombat, donde los guerreros más poderosos de cada reino combaten a muerte. Si un reino gana diez torneos consecutivos, puede conquistar otro.
-El villano Shao Kahn, emperador de Outworld, ha intentado conquistar Earthrealm en varias ocasiones, enfrentándose a héroes como Liu Kang, Raiden y Johnny Cage. A lo largo de la saga, han surgido amenazas como Shinnok, Quan Chi y el Rey Dragón Onaga, cada uno con sus propios planes de dominación.
-La historia ha evolucionado con el tiempo, incluyendo líneas temporales alternativas y reboots, como el de Mortal Kombat
-      </p>
-      <p>
-        
-      </p>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h4>REINOS PRINCIPALES</h4>
+          <ul>
+            <li><strong>Earthrealm:</strong> Nuestro mundo, protegido por Raiden</li>
+            <li><strong>Outworld:</strong> Gobernado por Shao Kahn</li>
+            <li><strong>Netherrealm:</strong> Reino de los condenados</li>
+            <li><strong>Edenia:</strong> Reino de Kitana y Mileena</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h4>PERSONAJES CLAVE</h4>
+          <ul>
+            <li><strong>Liu Kang:</strong> El campeón de Earthrealm</li>
+            <li><strong>Scorpion & Sub-Zero:</strong> Rivalidad icónica</li>
+            <li><strong>Raiden:</strong> Dios del Trueno</li>
+            <li><strong>Shao Kahn:</strong> Principal antagonista</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-4">
+        <p>
+          En MK1 (2023), Liu Kang reescribe la historia al convertirse en Dios del Fuego. Esto da lugar a nuevas alianzas y amenazas, dejando espacio para futuras entregas.
+        </p>
+      </div>
     </section>
   </div>
 
+  <footer>
+    <div class="container">
+      <p>© 2025 MORTAL KOMBAT | TODOS LOS DERECHOS RESERVADOS</p>
+    </div>
+  </footer>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script.js"></script>
+  <script>
+    // Efecto de scroll suave
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Efecto de aparición de secciones
+    const sections = document.querySelectorAll('.section-box');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = 1;
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    sections.forEach(section => {
+      section.style.opacity = 0;
+      section.style.transform = 'translateY(20px)';
+      section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(section);
+    });
+  </script>
 </body>
 </html>
